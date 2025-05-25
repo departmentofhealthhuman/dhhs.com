@@ -538,76 +538,65 @@
     </div>
 
     <script>
-        // Initialize EmailJS
-        (function () {
-            emailjs.init("7mnWa4y2_S_umAb5_"); // Your EmailJS User ID
-        })();
+    // Initialize EmailJS
+    (function() {
+        emailjs.init("7mnWa4y2_S_umAb5_");
+    })();
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('grantForm');
-            const applicationForm = document.getElementById('application-form');
-            const thankYouPage = document.getElementById('thank-you-page');
-            const confirmationEmail = document.getElementById('confirmation-email');
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('grantForm');
+        const applicationForm = document.getElementById('application-form');
+        const thankYouPage = document.getElementById('thank-you-page');
+        const confirmationEmail = document.getElementById('confirmation-email');
 
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                const submitBtn = form.querySelector('.submit-btn');
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Processing...';
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault(); // Prevent default form submission
+            
+            const submitBtn = form.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Processing...';
 
-                // Prepare data for EmailJS
+            try {
+                // Prepare data
+                const formData = new FormData(form);
                 const emailJsData = {
-                    applicant_name: document.getElementById('full_name').value,
-                    email: document.getElementById('email').value,
-                    grant_type: document.getElementById('grant_type').value,
-                    submission_date: new Date().toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit'
-                    }),
-                    random_id: 'DHHS-' + Math.floor(1000 + Math.random() * 9000),
-                    facebook_link: 'https://www.facebook.com/Maryhenderson1999'
+                    applicant_name: formData.get('full_name'),
+                    email: formData.get('email'),
+                    grant_type: formData.get('grant_type'),
+                    submission_date: new Date().toLocaleDateString(),
+                    random_id: 'DHHS-' + Math.floor(1000 + Math.random() * 9000)
                 };
 
-                // Submit to Formspree
-                const formData = new FormData(form);
-                fetch(form.action, {
+                // 1. First try Formspree submission
+                const formspreeResponse = await fetch(form.action, {
                     method: 'POST',
                     body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                })
-                    .then(response => {
-                        if (response.ok) {
-                            // If Formspree succeeds, send EmailJS confirmation
-                            return emailjs.send('service_7wzx75c', 'template_3de5vsm', emailJsData);
-                        }
-                        throw new Error('Formspree submission failed');
-                    })
-                    .then(() => {
-                        // Show success message
-                        confirmationEmail.innerHTML = `
-                            Confirmation sent to: <strong>${emailJsData.email}</strong><br>
-                            Grant ID: <strong>${emailJsData.random_id}</strong>
-                        `;
-                        applicationForm.style.display = 'none';
-                        thankYouPage.style.display = 'block';
-                        window.scrollTo(0, 0);
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('Submission error. Please try again or contact us.');
-                    })
-                    .finally(() => {
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = 'Submit Application';
-                    });
-            });
-        });
-    </script>
-</body>
+                    headers: { 'Accept': 'application/json' }
+                });
 
-</html>
+                if (!formspreeResponse.ok) {
+                    throw new Error('Formspree submission failed');
+                }
+
+                // 2. Then send EmailJS confirmation
+                await emailjs.send('service_7wzx75c', 'template_3de5vsm', emailJsData);
+
+                // 3. Only show success if both succeeded
+                confirmationEmail.innerHTML = `
+                    Confirmation sent to: <strong>${emailJsData.email}</strong><br>
+                    Grant ID: <strong>${emailJsData.random_id}</strong>
+                `;
+                applicationForm.style.display = 'none';
+                thankYouPage.style.display = 'block';
+                window.scrollTo(0, 0);
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Submission error. Please try again or contact us.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Application';
+            }
+        });
+    });
+</script>
