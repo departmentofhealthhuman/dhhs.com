@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHHS Grant Assistance Program</title>
+    <link rel="stylesheet" href="dhhs-form.html">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f5f9fc;
+        }
+
+        /* Header with Animation */
+        .header {
+            background-color: #005eaa;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .dhhs-logo {
+            height: 60px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .dhhs-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .program-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #e1f0fa;
+        }
+
+        .header .tagline {
+            margin: 0.5rem 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* Hero Section with Animation */
+        .hero {
+            background: linear-gradient(rgba(0, 94, 170, 0.7), rgba(0, 94, 170, 0.7)),
+                url('https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        /* Animated Button */
+        .btn {
+            display: inline-block;
+            background-color: #fff;
+            color: #005eaa;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .btn:hover {
+            background-color: #e1f0fa;
+            transform: translateY(-3px) scale(1.05);
+            animation: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Marquee Announcement */
+        .marquee-container {
+            background-color: rgba(0, 94, 170, 0.1);
+            padding: 12px 0;
+            margin: 0 auto;
+            overflow: hidden;
+            border-top: 1px solid #e1f0fa;
+            border-bottom: 1px solid #e1f0fa;
+            max-width: 1200px;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 25s linear infinite;
+            padding-left: 100%;
+        }
+
+        .marquee-item {
+            display: inline-block;
+            margin-right: 40px;
+            color: #005eaa;
+            font-weight: 500;
+        }
+
+        .marquee-item i {
+            color: #28a745;
+            margin-right: 8px;
+        }
+
+        /* Animated Cards */
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .benefit-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .benefit-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .benefit-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .benefit-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .benefit-card:hover .benefit-img {
+            transform: scale(1.05);
+        }
+
+        /* Testimonial Animation */
+        .testimonial {
+            background-color: #005eaa;
+            color: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.8s forwards;
+        }
+
+        /* Footer Animation */
+        .footer {
+            background-color: #003d6b;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.03);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero {
+                height: 300px;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .dhhs-logo {
+                height: 50px;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header .program-name {
+                font-size: 1.3rem;
+            }
+
+            .header .tagline {
+                font-size: 1rem;
+            }
+
+            .marquee-content {
+                animation: marquee 15s linear infinite;
+            }
+
+            .marquee-item {
+                margin-right: 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        .benefit-content {
+            padding: 1.5rem;
+            text-align: center;
+            /* Center all text */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Center child elements horizontally */
+        }
+
+        .benefit-content h3 {
+            color: #005eaa;
+            margin-top: 0;
+            text-align: center;
+            /* Explicit center for heading */
+            width: 100%;
+            /* Ensure full width for proper centering */
+        }
+
+        .benefit-content p {
+            text-align: center;
+            /* Center paragraph text */
+            max-width: 90%;
+            /* Prevent text from stretching too wide */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-link,
+        .social-link i,
+        .social-link span {
+            color: white !important;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            opacity: 0.8;
+        }
+
+        .section-title {
+            text-align: center;
+        }
+
+        .benefit-content h3 {
+            text-align: center;
+        }
+
+        .cta {
+            text-align: center;
+            padding: 3rem 1rem;
+            background-color: #e1f0fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-content">
+            <img src="https://www.hhs.gov/sites/default/files/hhs-logo.png" alt="DHHS Logo" class="dhhs-logo">
+            <h1>Department of Health and Human Services</h1>
+            <div class="program-name">Grant Assistance Program</div>
+            <p class="tagline">Supporting Americans in times of need</p>
+        </div>
+    </div>
+
+    <!-- Marquee Announcement -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span class="marquee-item"><i class="fas fa-check-circle"></i> Over 12,500 grants awarded this year</span>
+            <span class="marquee-item"><i class="fas fa-check-circle"></i> 94% applicant satisfaction rate</span>
+            <span class="marquee-item"><i class="fas fa-check-circle"></i> No application fees</span>
+            <span class="marquee-item"><i class="fas fa-check-circle"></i> Average approval time: 2-3 business
+                days</span>
+            <span class="marquee-item"><i class="fas fa-check-circle"></i> Confidential process</span>
+            <span class="marquee-item"><i class="fas fa-check-circle"></i> Multiple grant programs available</span>
+        </div>
+    </div>
+
+    <div class="hero">
+        <h2>Financial Support for Those Who Need It Most</h2>
+        <p>Providing essential assistance to low-income individuals, unemployed workers, and people with disabilities to
+            help meet basic needs and achieve stability.</p>
+        <a href="dhhs-form.html" class="btn">Apply Now</a>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">Our Grant Programs</h2>
+
+        <div class="benefits">
+            <div class="benefit-card">
+                <div class="benefit-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                </div>
+                <div class="benefit-content">
+                    <h3>Low-Income Assistance</h3>
+                    <p>Financial support for individuals and families struggling to make ends meet, helping with
+                        housing, utilities, and essential living expenses.</p>
+                </div>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                </div>
+                <div class="benefit-content">
+                    <h3>Unemployment Support</h3>
+                    <p>Temporary assistance for those between jobs to help cover basic needs while seeking new
+                        employment opportunities.</p>
+                </div>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-img"
+                    style="background-image: url('https://images.unsplash.com/photo-1516733968668-dbdce39c4651?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                </div>
+                <div class="benefit-content">
+                    <h3>Disability Grants</h3>
+                    <p>Specialized financial assistance for individuals with disabilities to help with medical expenses
+                        and accessibility needs.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial">
+            <p>"The DHHS grant program helped me keep my home after I was injured and couldn't work. The application
+                process was straightforward and the assistance came right when I needed it most."</p>
+            <div class="testimonial-author">- James R., Grant Recipient</div>
+        </div>
+    </div>
+
+    <div class="cta">
+        <h2>Ready to Get Started?</h2>
+        <p>Begin your application today for financial assistance from the DHHS Grant Program.</p>
+        <a href="dhhs-form.html" class="btn">Apply Now</a>
+    </div>
+
+    <div class="footer">
+        <h3>Contact DHHS</h3>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>(205) 858-0031</span>
+            </div>
+
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>Maryhenderson1919@gmail.com</span>
+            </div>
+
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>39859 Bucksville Ln, Aldie, VA 20105, United States, Virginia Beach, VA, United States,
+                    Virginia</span>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.facebook.com/Maryhenderson1999" class="social-link" target="_blank"
+                aria-label="Connect with us on Facebook">
+                <i class="fab fa-facebook-f"></i>
+                <span>Connect on Facebook</span>
+            </a>
+        </div>
+
+        <div class="copyright">
+            &copy; 2025 Department of Health and Human Services. All rights reserved.
+        </div>
+    </div>
+</body>
+
+</html>
